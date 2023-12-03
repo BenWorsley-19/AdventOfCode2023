@@ -12,6 +12,7 @@ import (
 func main() {
 	var filePath = "gamesData.txt"
 	readFile, err := os.Open(filePath)
+	defer readFile.Close()
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -55,8 +56,6 @@ func main() {
 	}
 	fmt.Println("result:")
 	fmt.Println(result)
-
-	readFile.Close()
 }
 
 func calcPartOne(highestRed int, highestBlue int, highestGreen int, id string) int {
