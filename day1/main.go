@@ -1,23 +1,16 @@
 package main
 
 import (
-	"bufio"
+	"adventofcode/utils"
 	"fmt"
 	"log"
-	"os"
 	"strconv"
 	"unicode"
 )
 
 func main() {
-	var filePath = "calibrationData.txt"
-	readFile, err := os.Open(filePath)
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	fileScanner := bufio.NewScanner(readFile)
-	fileScanner.Split(bufio.ScanLines)
+	input := utils.InitInputFile("calibrationData.txt")
+	defer input.Close()
 
 	digitMap := map[string]string{
 		"one":   "1",
@@ -30,23 +23,15 @@ func main() {
 		"eight": "8",
 		"nine":  "9",
 	}
-
 	var digitTree *DigitTrie = InitDigitTrie()
 
 	var result int = 0
-	for fileScanner.Scan() {
-		var line = fileScanner.Text()
-		fmt.Println("line:")
-		fmt.Println(line)
+	for input.MoveToNextLine() {
+		var line = input.ReadLine()
 		var numberFromLine int = combineFirstAndLastDigitIncludingText(line, digitMap, digitTree)
-		fmt.Println("numberfromline:")
-		fmt.Println(numberFromLine)
 		result += numberFromLine
-		fmt.Println("result:")
-		fmt.Println(result)
 	}
-
-	readFile.Close()
+	fmt.Println("result:", result)
 }
 
 // part 1
@@ -96,9 +81,6 @@ func combineFirstAndLastDigitIncludingText(line string, digitMap map[string]stri
 		var potentialWord string = string(rune)
 		for j := i + 1; j < len(runes); j++ {
 			potentialWord += string(runes[j])
-			if potentialWord == "eigh" {
-				fmt.Print("zsdas")
-			}
 			node = digitTree.IsNextCharInDigit(node, runes[j])
 			if nil == node {
 				break

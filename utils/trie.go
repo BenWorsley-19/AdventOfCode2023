@@ -1,4 +1,4 @@
-package main
+package utils
 
 type Node struct {
 	children [26]*Node
