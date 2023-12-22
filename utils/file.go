@@ -44,7 +44,11 @@ func (t *InputFile) Close() {
 }
 
 func InitInputFile(fileName string) InputFile {
-	var filePath = "../inputs/" + fileName
+	var filePath = fileName
+	if fileName[0] != '.' {
+		filePath = "../inputs/" + fileName
+	}
+
 	readFile, err := os.Open(filePath)
 	if err != nil {
 		log.Fatal(err)

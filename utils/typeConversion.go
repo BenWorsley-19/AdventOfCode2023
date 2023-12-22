@@ -29,6 +29,14 @@ func StringToInt(toCovert string) int {
 	return result
 }
 
+func HexToInt64(hex string) int64 {
+	result, err := strconv.ParseInt(hex, 16, 64)
+	if err != nil {
+		log.Fatal("Error during conversion")
+	}
+	return result
+}
+
 func RuneToInt(r rune) int {
 	return StringToInt(string(r))
 }
