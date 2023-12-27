@@ -6,7 +6,7 @@ import (
 	"fmt"
 )
 
-func ArrayContains(arr []rune, r rune) bool {
+func ArrayContains[T comparable](arr []T, r T) bool {
 	for _, i := range arr {
 		if i == r {
 			return true
