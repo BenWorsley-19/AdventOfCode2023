@@ -83,7 +83,7 @@ func partition(arr []Hand, lo int, hi int) int {
 					hasStrongerCards = true
 					break
 				}
-				// if it's not less than but not equal to, it's greater than so we no hasStrongerCards is false
+				// if it's not less than but not equal to, it's greater than so we know hasStrongerCards is false
 				if cardStrength != pivotCardStregth {
 					break
 				}
