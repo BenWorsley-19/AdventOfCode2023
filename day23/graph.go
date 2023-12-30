@@ -16,7 +16,7 @@ type graph struct {
 	adjacencyList map[point][]nodePointer
 }
 
-func InitGraph(start, end point, graphPoints []point, grid [][]rune, tileDirs map[rune][]direction) graph {
+func initGraph(start, end point, graphPoints []point, grid [][]rune, tileDirs map[rune][]direction) graph {
 	var g graph = graph{}
 	g.start = start
 	g.end = end

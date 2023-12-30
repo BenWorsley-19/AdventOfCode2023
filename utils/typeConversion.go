@@ -29,6 +29,14 @@ func StringToInt(toCovert string) int {
 	return result
 }
 
+func StringToFloat64(toCovert string) float64 {
+	result, err := strconv.ParseFloat(toCovert, 64)
+	if err != nil {
+		log.Fatal("Error during conversion")
+	}
+	return result
+}
+
 func HexToInt64(hex string) int64 {
 	result, err := strconv.ParseInt(hex, 16, 64)
 	if err != nil {

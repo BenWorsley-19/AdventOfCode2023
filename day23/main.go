@@ -26,7 +26,7 @@ func longestPathFollowingSlopes(start, end point, compressedPoints []point, grid
 		'>': {East},
 		'.': directions,
 	}
-	var hikeGraph graph = InitGraph(start, end, compressedPoints, grid, tileDirs)
+	var hikeGraph graph = initGraph(start, end, compressedPoints, grid, tileDirs)
 	return hikeGraph.dfs()
 }
 
@@ -38,7 +38,7 @@ func longestPathIgnoringSlopes(start, end point, compressedPoints []point, grid 
 		'>': directions,
 		'.': directions,
 	}
-	var hikeGraph graph = InitGraph(start, end, compressedPoints, grid, tileDirs)
+	var hikeGraph graph = initGraph(start, end, compressedPoints, grid, tileDirs)
 	return hikeGraph.dfs()
 }
 
